@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import os
-if os.environ.get('USER','') == 'vagrant':
-    del os.link
-
 import distutils.core
+
+if os.environ.get('USER', '') == 'vagrant':
+	del os.link
 
 name = 'arago-pyactionhandler'
 
@@ -33,24 +33,5 @@ kind of command line or API, e.g. SQL.
 			  'arago.pyactionhandler.protobuf'
 	],
 	install_requires=['gevent', 'docopt', 'zmq', 'protobuf'],
-	scripts=['bin/hiro-counting-rhyme-actionhandler.py', 'bin/ah-client.py', 'bin/create-zmq-keypair.sh'],
-	data_files=[
-		(
-			'/opt/autopilot/conf/external_actionhandlers/',
-			[
-				'config/external_actionhandlers/counting-rhyme-actionhandler.conf',
-				'config/external_actionhandlers/counting-rhyme-actionhandler-log.conf'
-			]
-		),
-		(
-			'/opt/autopilot/conf/external_actionhandlers/capabilities/',
-			[
-				'config/external_actionhandlers/capabilities/counting-rhyme-actionhandler.xml',
-				'config/external_actionhandlers/capabilities/counting-rhyme-actionhandler.yaml'
-			]
-		),
-		(
-			'/etc/init.d/', ['etc/init.d/hiro-counting-rhyme-actionhandler']
-		)
-	]
+	scripts=['bin/ah-client.py', 'bin/create-zmq-keypair.sh'],
 )
